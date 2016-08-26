@@ -38,9 +38,16 @@ app.get('/', function(req, res){
 app.get('/instagram', function(req, res) {
 	Instagram.tags.recent({
 		name: 'sfcyclingclub',
-		complete: function(data) {
+		complete: function(data, pagination) {
 			res.send(data);
-		}
+      console.log(data);
+      console.log(pagination)
+		},
+    error: function(errorMessage, errorObject, caller){
+            console.log(errorMessage);
+            console.log(errorObject);
+            console.log(caller);
+    }
 	});
 });
 
